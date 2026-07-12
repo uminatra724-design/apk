@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-Banking - Transfer & Tarik Tunai</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-mobile-alt"></i> M-Banking Pro</h1>
+                <p class="tagline">Transfer & Tarik Tunai Mudah</p>
+            </div>
+            <div class="user-profile">
+                <div class="profile-pic">UM</div>
+                <div class="profile-info">
+                    <p class="user-name">Uminatra724</p>
+                    <p class="account-balance">Saldo: Rp 5.000.000</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Navigation Tabs -->
+            <nav class="nav-tabs">
+                <button class="tab-btn active" data-tab="transfer">
+                    <i class="fas fa-exchange-alt"></i> Transfer
+                </button>
+                <button class="tab-btn" data-tab="withdraw">
+                    <i class="fas fa-money-bill-wave"></i> Tarik Tunai
+                </button>
+                <button class="tab-btn" data-tab="history">
+                    <i class="fas fa-history"></i> Riwayat
+                </button>
+            </nav>
+
+            <!-- Transfer Tab -->
+            <section id="transfer" class="tab-content active">
+                <div class="section-title">
+                    <h2>Transfer Antar Bank</h2>
+                </div>
+
+                <form id="transferForm" class="form-container">
+                    <!-- Bank Pengirim -->
+                    <div class="form-group">
+                        <label for="bankPengirim">Bank Pengirim</label>
+                        <select id="bankPengirim" class="input-field" required>
+                            <option value="">-- Pilih Bank Pengirim --</option>
+                            <option value="bca">BCA</option>
+                            <option value="mandiri">Mandiri</option>
+                            <option value="bni">BNI</option>
+                            <option value="bri">BRI</option>
+                            <option value="permata">Permata</option>
+                            <option value="cimb">CIMB Niaga</option>
+                        </select>
+                    </div>
+
+                    <!-- Nomor Rekening Pengirim -->
+                    <div class="form-group">
+                        <label for="rekeningPengirim">Nomor Rekening Pengirim</label>
+                        <input type="text" id="rekeningPengirim" class="input-field" placeholder="Contoh: 1234567890" required>
+                        <span class="info-text">Nomor rekening Anda</span>
+                    </div>
+
+                    <!-- Bank Penerima -->
+                    <div class="form-group">
+                        <label for="bankPenerima">Bank Penerima</label>
+                        <select id="bankPenerima" class="input-field" required>
+                            <option value="">-- Pilih Bank Penerima --</option>
+                            <option value="bca">BCA</option>
+                            <option value="mandiri">Mandiri</option>
+                            <option value="bni">BNI</option>
+                            <option value="bri">BRI</option>
+                            <option value="permata">Permata</option>
+                            <option value="cimb">CIMB Niaga</option>
+                            <option value="danamon">Danamon</option>
+                            <option value="ocbc">OCBC NISP</option>
+                        </select>
+                    </div>
+
+                    <!-- Nomor Rekening Penerima -->
+                    <div class="form-group">
+                        <label for="rekeningPenerima">Nomor Rekening Penerima</label>
+                        <input type="text" id="rekeningPenerima" class="input-field" placeholder="Contoh: 0987654321" required>
+                    </div>
+
+                    <!-- Nama Penerima -->
+                    <div class="form-group">
+                        <label for="namaPenerima">Nama Penerima</label>
+                        <input type="text" id="namaPenerima" class="input-field" placeholder="Nama pemilik rekening" required>
+                    </div>
+
+                    <!-- Jumlah Transfer -->
+                    <div class="form-group">
+                        <label for="jumlahTransfer">Jumlah Transfer (Rp)</label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol">Rp</span>
+                            <input type="number" id="jumlahTransfer" class="input-field" placeholder="0" min="10000" required>
+                        </div>
+                        <div class="fee-info">
+                            <span>Biaya Admin: <span id="biayaAdmin">Rp 0</span></span>
+                            <span>Total: <span id="totalTransfer">Rp 0</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Catatan Transfer -->
+                    <div class="form-group">
+                        <label for="catatanTransfer">Catatan (Opsional)</label>
+                        <textarea id="catatanTransfer" class="input-field" placeholder="Tambahkan catatan" rows="3"></textarea>
+                    </div>
+
+                    <!-- PIN Security -->
+                    <div class="form-group">
+                        <label for="pinTransfer">PIN Keamanan (6 digit)</label>
+                        <input type="password" id="pinTransfer" class="input-field" placeholder="Masukkan PIN" maxlength="6" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-large">
+                        <i class="fas fa-paper-plane"></i> Kirim Transfer
+                    </button>
+                </form>
+            </section>
+
+            <!-- Withdraw Tab -->
+            <section id="withdraw" class="tab-content">
+                <div class="section-title">
+                    <h2>Tarik Tunai Tanpa Kartu</h2>
+                </div>
+
+                <form id="withdrawForm" class="form-container">
+                    <!-- Bank untuk Tarik Tunai -->
+                    <div class="form-group">
+                        <label for="bankWithdraw">Pilih Bank ATM</label>
+                        <select id="bankWithdraw" class="input-field" required>
+                            <option value="">-- Pilih Bank --</option>
+                            <option value="bca">BCA</option>
+                            <option value="mandiri">Mandiri</option>
+                            <option value="bni">BNI</option>
+                            <option value="bri">BRI</option>
+                            <option value="permata">Permata</option>
+                            <option value="cimb">CIMB Niaga</option>
+                        </select>
+                    </div>
+
+                    <!-- Lokasi ATM -->
+                    <div class="form-group">
+                        <label for="lokasiATM">Lokasi ATM</label>
+                        <input type="text" id="lokasiATM" class="input-field" placeholder="Cari lokasi ATM terdekat" required>
+                        <button type="button" class="btn-secondary" id="btnCariATM">
+                            <i class="fas fa-location-dot"></i> Cari Terdekat
+                        </button>
+                    </div>
+
+                    <!-- Jumlah Tarik Tunai -->
+                    <div class="form-group">
+                        <label for="jumlahWithdraw">Jumlah Tarik Tunai (Rp)</label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol">Rp</span>
+                            <input type="number" id="jumlahWithdraw" class="input-field" placeholder="0" min="50000" required>
+                        </div>
+                        <div class="quick-amounts">
+                            <button type="button" class="quick-btn" data-amount="50000">50K</button>
+                            <button type="button" class="quick-btn" data-amount="100000">100K</button>
+                            <button type="button" class="quick-btn" data-amount="500000">500K</button>
+                            <button type="button" class="quick-btn" data-amount="1000000">1JT</button>
+                        </div>
+                        <div class="fee-info">
+                            <span>Biaya Admin: <span id="biayaAdminWithdraw">Rp 0</span></span>
+                            <span>Total: <span id="totalWithdraw">Rp 0</span></span>
+                        </div>
+                    </div>
+
+                    <!-- PIN Security -->
+                    <div class="form-group">
+                        <label for="pinWithdraw">PIN Keamanan (6 digit)</label>
+                        <input type="password" id="pinWithdraw" class="input-field" placeholder="Masukkan PIN" maxlength="6" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-large">
+                        <i class="fas fa-money-bill-wave"></i> Buat Kode Tarik Tunai
+                    </button>
+                </form>
+
+                <!-- Withdrawal Code Display -->
+                <div id="codeWithdrawal" class="code-display" style="display: none;">
+                    <div class="code-content">
+                        <h3>Kode Tarik Tunai Anda</h3>
+                        <div class="code-box">
+                            <span id="withdrawalCode" class="code-number">000000</span>
+                            <button type="button" class="btn-copy" id="btnCopyCode">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <p class="code-info">Gunakan kode ini di ATM untuk tarik tunai tanpa kartu</p>
+                        <p class="code-timer">Kode berlaku selama: <span id="codeTimer">5 menit</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Tab -->
+            <section id="history" class="tab-content">
+                <div class="section-title">
+                    <h2>Riwayat Transaksi</h2>
+                </div>
+
+                <div class="filter-options">
+                    <select id="filterType" class="input-field">
+                        <option value="">Semua Transaksi</option>
+                        <option value="transfer">Transfer</option>
+                        <option value="withdraw">Tarik Tunai</option>
+                    </select>
+                </div>
+
+                <div id="historyList" class="history-list">
+                    <!-- History items will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Notification Toast -->
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <!-- Modal Confirmation -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3>Konfirmasi Transaksi</h3>
+            <div id="confirmDetails" class="confirm-details"></div>
+            <div class="modal-buttons">
+                <button id="btnConfirmCancel" class="btn-secondary">Batal</button>
+                <button id="btnConfirmOk" class="btn-primary">Lanjutkan</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
